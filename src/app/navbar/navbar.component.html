@@ -1,17 +1,28 @@
-<div class="has-pt-6 has-pb-6 has-pl-8 has-pr-8 is-flex has-items-center has-bg-aqua-600 has-text-white">
+<div class="has-pt-6 has-pb-6 has-pl-8 has-pr-8 is-flex has-items-center has-bg-aqua-600 has-text-white has-justify-between" style="min-height: 6rem;">
 
-	<div id="navbar-menu" class="is-flex has-direction-column has-w-full has-justify-between">
+	<div id="navbar-menu" class="is-flex has-direction-row has-w-auto ">
 
-		<div class="is-flex">
-			<div routerLink="/historialesClinicos" class="is-flex has-items-center is-button">
+			<div *ngIf="showLeftArrow" routerLink="/historialesClinicos" class="is-flex has-items-center is-button">
 				<i class="fa-solid fa-circle-arrow-left has-size-3"></i>
+			</div>
+
+			<div *ngIf="!showLeftArrow" routerLink="/authentication" class="is-flex has-items-center is-button">
+				<i class="fa-solid fa-bars has-size-3"></i>
 			</div>
 
 			<div class="is-flex has-items-center has-pt-1 has-pl-8">
 				<h3 class="has-m-0">{{ windowTitle }}</h3>
 			</div>
-		</div>
 
+	</div>
+
+	<div *ngIf="!showLeftArrow" class="is-flex has-items-center">
+		<div class="is-relative">
+			<input type="text" class="input is-pill has-text-gray-500 has-pl-12 has-w-96" placeholder="Busca por paciente, telefono">
+		</div>
+		<div class="is-absolute has-pl-4">
+			<i class="fa-solid fa-magnifying-glass has-text-gray-500"></i>
+		</div>
 	</div>
 
 </div>
