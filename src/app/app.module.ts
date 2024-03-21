@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { AngularToastifyModule } from 'angular-toastify';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AgregarHistorialClinicoComponent } from './agregar-historial-clinico/agregar-historial-clinico.component';
+import { HttpClientModule } from '@angular/common/http';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
 	declarations: [
@@ -20,7 +22,7 @@ import { AgregarHistorialClinicoComponent } from './agregar-historial-clinico/ag
 		AuthComponent,
 		HistorialesClinicosComponent,
   		NavbarComponent,
-    AgregarHistorialClinicoComponent,
+    	AgregarHistorialClinicoComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -28,9 +30,11 @@ import { AgregarHistorialClinicoComponent } from './agregar-historial-clinico/ag
 		RouterOutlet,
 		FormsModule,
 		AngularToastifyModule,
+		HttpClientModule,
 		provideFirebaseApp(() => initializeApp({"projectId":"angular-project-ubr","appId":"1:669431098561:web:e636d1a228291bffeb3840","storageBucket":"angular-project-ubr.appspot.com","apiKey":"AIzaSyBk1Ca1wN6f4UpsvApN5ASCYmm2yeWrxXA","authDomain":"angular-project-ubr.firebaseapp.com","messagingSenderId":"669431098561","measurementId":"G-30DTNLY7E9"})),
 		provideAuth(() => getAuth()),
-		provideDatabase(() => getDatabase())
+		provideDatabase(() => getDatabase()),
+		provideFirestore(() => getFirestore())
 	],
 	providers: [
 		provideClientHydration(),

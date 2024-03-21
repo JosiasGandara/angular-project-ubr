@@ -1,0 +1,39 @@
+strong {
+	color: #747c8b;
+}
+
+label {
+	color: #747c8b;
+	font-weight: 600;
+}
+
+input {
+	font-family: Volte;
+	color: #747c8b;
+}
+
+select {
+	font-family: Volte;
+}
+
+.checkbox:checked {
+	background-color: #747c8b !important;
+}
+
+.input-line {
+	padding: 0;
+	background: none;
+	border: none;
+}
+
+.input-line:focus {
+	outline: none;
+}
+
+.btn-guardar-hc {
+	position: fixed; bottom: 2rem; right: 2rem;
+}
+
+.btn-guardar-hc:hover {
+	cursor: pointer;
+}

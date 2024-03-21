@@ -1,1 +1,263 @@
-<p>agregar-historial-clinico works!</p>
+<div class="has-h-screen is-flex has-direction-column has-bg-gray-100">
+
+	<app-navbar windowTitle="{{ title }}"></app-navbar>
+
+	<div class="has-h-full is-flex has-direction-column has-justify-center has-pl-12 has-pr-12">
+
+		<!-- Primera fila / Nombres, apellido paterno y materno -->
+		<div class="has-h-auto is-flex has-direction-row has-pb-4">
+
+			<div class="is-flex has-direction-column has-w-full">
+				<label class="label has-text-gray-600">Nombre(s):</label>
+				<input [(ngModel)]="hcNombres" type="text" class="input has-bg-gray-200" placeholder="Ejemplo: Juan"/>
+				<p class="has-mt-2 has-size-0 has-text-aqua-500">Máximo de caracteres disponibles: De 0 a 20</p>
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full has-ml-16 has-mr-16">
+				<label class="label has-text-gray-600">Apellido paterno:</label>
+				<input [(ngModel)]="hcApellidoPaterno" type="text" class="input has-bg-gray-200" placeholder="Ejemplo: Pérez"/>
+				<p class="has-mt-2 has-size-0 has-text-aqua-500">Máximo de caracteres disponibles: De 0 a 15</p>
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full">
+				<label class="label has-text-gray-600">Apellido materno:</label>
+				<input [(ngModel)]="hcApellidoMaterno" type="text" class="input has-bg-gray-200" placeholder="Ejemplo: Gonzalez"/>
+				<p class="has-mt-2 has-size-0 has-text-aqua-500">Máximo de caracteres disponibles: De 0 a 15</p>
+			</div>
+
+		</div>
+
+		<!-- Segunda fila / fecha nacimiento, estado y municipio, sexo  -->
+		<div class="has-h-auto is-flex has-direction-row has-pb-4 has-justify-between">
+
+			<div class="is-flex has-direction-column has-w-full">
+				<label class="label has-text-gray-600">Fecha de nacimiento:</label>
+          		<input id="fechaNa" type="date" class="input has-bg-gray-200"/>
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full has-ml-16 has-mr-8">
+				<label class="label has-text-gray-600">Estado de origen:</label>
+          		<select #selectEstado class="select has-bg-gray-200 has-text-gray-500" >
+					<option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+				</select>
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full has-ml-8 has-mr-16">
+				<label class="label has-text-gray-600">Municipio de origen:</label>
+          		<select #selectMunicipio [(ngModel)]="estadoSeleccionado" class="select has-bg-gray-200 has-text-gray-500" >
+
+				</select>
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full">
+				<label class="label has-text-gray-600">Sexo:</label>
+          		<select [(ngModel)]="hcSexo" class="select has-bg-gray-200 has-text-gray-500" >
+					<option>Masculino</option>
+					<option>Femenino</option>
+				</select>
+			</div>
+
+		</div>
+
+		<!-- Tercera fila / Telefono, ocupacion, entidad de salud, contacto de emergencia -->
+		<div class="has-h-auto is-flex has-pb-4 has-direction-row has-justify-between">
+
+			<div class="is-flex has-direction-column has-w-full">
+				<label class="label has-text-gray-600">Teléfono:</label>
+				<input type="text" class="input has-bg-gray-200" placeholder="Ejemplo: 6692665010" />
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full has-ml-16 has-mr-8">
+				<label class="label has-text-gray-600">Ocupación:</label>
+				<input type="text" class="input has-bg-gray-200" placeholder="Ejemplo: Estudiante" />
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full has-ml-8 has-mr-16">
+				<label class="label has-text-gray-600">Entidad de salud:</label>
+          		<select class="select has-bg-gray-200 has-text-gray-500">
+					<option selected>IMSS</option>
+					<option>ISSSTE</option>
+					<option>SEDENA</option>
+				</select>
+			</div>
+
+			<div class="is-flex has-direction-column has-w-full">
+				<label class="label has-text-gray-600">Contácto de emergencia:</label>
+				<input type="text" class="input has-bg-gray-200" placeholder="Ejemplo: 6691220932" />
+			</div>
+
+		</div>
+
+		<!-- Cuarta fila / Antecedentes hereditarios y patologicos -->
+		<div class="has-h-auto is-flex has-direction-row">
+
+			<div class="has-w-full has-mr-2">
+				<label class="label has-text-gray-600" >Antecedentes hereditarios:</label>
+				<div class="has-bg-gray-200 has-p-2 is-rounded">
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600">DM:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;"/>
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600">P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;"/>
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;"/>
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >HAS:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600 " >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >IAM:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >ASMA:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >ARTRITIS:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >NEOPLASIS:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600 " >P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600 " >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >CARDIOPATIAS:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600 " >P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600" >M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600">EPILEPSIA:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600">P</strong>
+							<input type="checkbox" id="pdm" class="checkbox" style="border: 2px solid #747C8B;" />
+							<strong class="has-mr-1 has-ml-1 has-text-gray-600">M</strong>
+							<input type="checkbox" id="mdm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="has-m-3" style="border: none; border-bottom: 1px solid #747C8B;">
+						<label class="label has-text-gray-600 has-bg-muted">OTROS:</label>
+						<input type="text" id="dm" class="has-w-full has-pb-2 input-line" placeholder="Ejemplo: Leucemia" />
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="has-w-full has-ml-2">
+				<label class="label has-text-gray-600" >Antecedentes patológicos:</label>
+				<div class="has-bg-gray-200 has-p-2 is-rounded">
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600">DM:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;"/>
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >HAS:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >FRACTURAS:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >TABAQUISMO:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >ALCOHOLISMO:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="is-flex has-m-3 has-content-center">
+						<strong class="span has-text-gray-600" >TRANSFUCIONES:</strong>
+						<div class="has-ml-auto is-not-allowed">
+							<input type="checkbox" id="dm" class="checkbox" style="border: 2px solid #747C8B;" />
+						</div>
+					</div>
+
+					<div class="has-m-3" style="border: none; border-bottom: 1px solid #747C8B;">
+						<label class="label has-text-gray-600 has-bg-muted">CIRUGIAS:</label>
+						<input type="text" id="dm" class="has-w-full has-pb-2 input-line" placeholder="Ejemplo: Laparoscopía" />
+					</div>
+
+					<div class="has-m-3" style="border: none; border-bottom: 1px solid #747C8B;">
+						<label class="label has-text-gray-600 has-bg-muted">ALERGIAS:</label>
+						<input type="text" id="dm" class="has-w-full has-pb-2 input-line" placeholder="Ejemplo: Naproxeno" />
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div (click)="onSumbit()" class="btn-guardar-hc has-h-24 has-w-24 is-flex has-items-center has-justify-center is-pill has-bg-green-300 has-bg-green-400-hover is-shadowed">
+	<i class="fa-solid fa-file-circle-check has-size-6 has-text-green-600"></i>
+</div>
