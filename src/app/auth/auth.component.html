@@ -1,0 +1,76 @@
+<!-- Contenedor hero -->
+<div class="is-flex has-h-screen has-items-center has-direction-row has-bg-gray-100" style="overflow-y: hidden;">
+
+	<!-- Contenedor hijo izquierdo -->
+	<div class="is-flex has-h-screen has-w-half has-items-center has-justify-center Left has-bg-aqua-600 has-bg-gray-100 fadeInLeft">
+
+		<div class="has-size-7 has-weight-black has-text-gray-700">
+			<img src="../../assets/img/logo_ubr.svg" alt="" width="500" height="500"/>
+		</div>
+
+	</div>
+	<!-- Fin del contenedor hijo izquierdo -->
+
+	<!-- Contenedor hijo derecho -->
+	<div class="is-flex has-h-screen has-w-half has-items-center has-bg-gray-100">
+
+		<div class="has-pl-4 has-pr-4 has-ml-auto has-mr-auto fadeInUp" style="width: 34rem">
+
+			<div class="card is-shadowed has-bg-white">
+
+				<h3 class="has-mt-0 has-mb-4 has-text-center has-text-aqua-600">Bienvenido(a)!</h3>
+
+				<div class="has-mb-4">
+					<label class="label is-medium has-text-gray-500">Correo electronico</label>
+					<input id="userEmail" type="text" [(ngModel)]="userEmail" class="input has-text-gray-500 has-bg-gray-200" placeholder="ejemplo@dominio.mx"/>
+				</div>
+
+				<div class="has-mb-6">
+					<label class="label is-medium has-text-gray-500">Contraseña</label>
+					<input id="userPassword" type="password" [(ngModel)]="userPassword" class="input has-text-gray-500 has-bg-gray-200" placeholder="Ingresa tu contraseña aquí"/>
+				</div>
+
+				<button id="iniciarSesion" type="button" (click)="logIn()" (keyup.enter)="logIn()" class="button is-full has-text-white has-bg-aqua-600 has-bg-aqua-700-hover">
+					<span class="is-medium">Iniciar sesión</span>
+				</button>
+
+			</div>
+
+			<div class="forget-pass has-mt-8" align="center">
+				<a class="is-not-underlined button has-text-gray-500 has-text-aqua-600-hover" (click)="mostrarModal()">
+					<strong>¿Olvidaste tu usuario / contraseña?</strong>
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Fin del contenedor hijo derecho -->
+
+</div>
+
+<div class="scrim fadeIn" [class.is-hidden]="isHidden">
+
+	<div class="modal has-p-8 is-shadowed fadeInUp">
+
+		<div class="is-flex has-justify-between has-items-center">
+			<h4 class="has-m-0 has-text-aqua-600">¿Olvidaste tu usuario / contraseña?</h4>
+			<div class="is-flex has-items-center is-clickable" (click)="mostrarModal()">
+				<i class="fa-solid fa-xmark has-size-3 has-text-gray-500 has-text-gray-600-hover"></i>
+			</div>
+		</div>
+
+		<hr class="has-bg-gray-400" />
+
+		<div class="has-mb-4">
+			Contacta a nuestro soporte! - Teléfono: +52(669)2-66-50-10
+		</div>
+
+		<button class="button is-medium is-full has-bg-aqua-600 has-bg-aqua-700-hover">
+			Abrir formulario de contacto
+		</button>
+
+	</div>
+
+</div>
+<!-- Fin del contenedor hero -->
